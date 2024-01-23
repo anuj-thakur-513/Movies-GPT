@@ -3,7 +3,7 @@ export const validateData = (email, password) => {
     email
   );
   const isPasswordValid =
-    /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]).{6,}$/.test(
+    /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\-]).{6,}$/.test(
       password
     );
 

@@ -56,7 +56,9 @@ const Login = () => {
           placeholder="Password"
           className="p-4 my-3 w-full rounded bg-gray-800 bg-opacity-85"
         />
-        <p className="bg-[#E87C03] p-3 rounded">{errorMessage}</p>
+        {errorMessage && (
+          <p className="bg-[#E87C03] p-3 rounded">{errorMessage}</p>
+        )}
         <button
           className="p-4 my-6 w-full bg-red-600 rounded hover:bg-red-700 duration-150"
           onClick={handleAuthClick}
