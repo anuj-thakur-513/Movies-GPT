@@ -12,6 +12,10 @@ const Login = () => {
 
   const toggleSignIn = () => {
     setIsSignIn(!isSignIn);
+    // Reset all the fields and error message
+    email.current.value = "";
+    password.current.value = "";
+    setErrorMessage(null);
   };
 
   const handleAuthClick = () => {
@@ -27,7 +31,7 @@ const Login = () => {
         <img
           src="/assets/backgroundImage.jpg"
           alt="background"
-          className="w-screen h-screen"
+          className="w-screen h-screen brightness-75"
         />
       </div>
       <form
