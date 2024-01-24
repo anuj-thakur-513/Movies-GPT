@@ -1,14 +1,21 @@
 import { useRef, useState } from "react";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
 import Header from "./Header";
 import { Link } from "react-router-dom";
 import { validateData } from "../utils/validate";
 
 const Login = () => {
-  const [isSignIn, setIsSignIn] = useState(true);
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [isSignIn, setIsSignIn] = useState(true); // state for toggling signup/signin
+  const [errorMessage, setErrorMessage] = useState(null); // state to show errors faced while auth
+  const [authenticating, setAuthenticating] = useState(false); // state to show loading state while authenticating
 
   const email = useRef(null);
   const password = useRef(null);
+  const name = useRef(null);
 
   const toggleSignIn = () => {
     setIsSignIn(!isSignIn);
@@ -22,6 +29,49 @@ const Login = () => {
     // validate email & password
     const message = validateData(email.current.value, password.current.value);
     setErrorMessage(message);
+    if (message) {
+      return;
+    }
+
+    // Authentication Logic
+    setAuthenticating(true);
+    if (!isSignIn) {
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + " - " + errorMessage);
+        })
+        .finally(() => {
+          setAuthenticating(false);
+        });
+    } else {
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + " - " + errorMessage);
+        })
+        .finally(() => {
+          setAuthenticating(false);
+        });
+    }
   };
 
   return (
@@ -44,6 +94,7 @@ const Login = () => {
         {!isSignIn && (
           <input
             type="text"
+            ref={name}
             placeholder="Full Name"
             className="p-4 my-4 w-full bg-gray-800 bg-opacity-85"
           />
@@ -64,10 +115,18 @@ const Login = () => {
           <p className="bg-[#E87C03] p-3 rounded">{errorMessage}</p>
         )}
         <button
-          className="p-4 my-6 w-full bg-red-600 rounded hover:bg-red-700 duration-150"
+          className="p-4 my-6 w-full h-14 relative bg-red-600 rounded hover:bg-red-700 duration-150"
           onClick={handleAuthClick}
+          disabled={authenticating}
         >
-          {isSignIn ? "Sign In" : "Sign Up"}
+          {authenticating && (
+            <img
+              src="/assets/loading.gif"
+              alt="Loading"
+              className="absolute inset-0 m-auto max-w-full h-6"
+            />
+          )}
+          {authenticating ? "" : isSignIn ? "Sign In" : "Sign Up"}
         </button>
         <div className="py-4 flex">
           <p className="text-gray-400">
