@@ -2,13 +2,19 @@ import { useRef, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import Header from "./Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { validateData } from "../utils/validate";
+import { useDispatch } from "react-redux";
+import { addUser } from "../store/user/userSlice";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [isSignIn, setIsSignIn] = useState(true); // state for toggling signup/signin
   const [errorMessage, setErrorMessage] = useState(null); // state to show errors faced while auth
   const [authenticating, setAuthenticating] = useState(false); // state to show loading state while authenticating
@@ -43,7 +49,23 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
+
+          return updateProfile(user, {
+            displayName: name.current.value,
+            photoURL: "/assets/userProfileIcon.jpg",
+          });
+        })
+        .then(() => {
+          const updatedUser = auth.currentUser;
+          dispatch(
+            addUser({
+              uid: updatedUser.uid,
+              email: updatedUser.email,
+              displayName: updatedUser.displayName,
+            })
+          );
+
+          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
