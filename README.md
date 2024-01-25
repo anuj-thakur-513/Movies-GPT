@@ -1,8 +1,22 @@
 # Movies GPT
 
 ## Browse Page Design for Logged In User
+
 ![netflix gpt design](https://github.com/anuj-thakur-513/Movies-GPT/assets/82753410/5b2010fb-5465-4d8a-8ffe-ece93efa00a6)
 
+## Folder Structure
+
+- components
+  - All the components of the app
+- hooks
+  - all the custom hooks to be used
+- store
+  - eg. user
+    - reducer_files
+    - slice
+  - appStore.js (main store file)
+- utils
+  - general utility functions
 
 ## Features
 
