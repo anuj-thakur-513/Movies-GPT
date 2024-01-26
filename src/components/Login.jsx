@@ -18,7 +18,7 @@ const Login = () => {
   const name = useRef(null);
 
   const toggleSignIn = () => {
-    setIsSignIn(!isSignIn);
+    setIsSignIn((isSignIn) => !isSignIn);
     // Reset all the fields and error message
     email.current.value = "";
     password.current.value = "";
