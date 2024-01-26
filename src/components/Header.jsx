@@ -1,20 +1,11 @@
-import { auth } from "../utils/firebase";
-import { signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import logout from "../utils/logout";
 
 const Header = () => {
-  const navigate = useNavigate();
   const user = useSelector((store) => store.user);
 
   const handleSignoutClick = () => {
-    signOut(auth)
-      .then(() => {
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    logout();
   };
 
   return (

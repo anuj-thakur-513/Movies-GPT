@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import Header from "./Header";
 import { Link } from "react-router-dom";
 import { validateData } from "../utils/validate";
 import { useDispatch } from "react-redux";
@@ -65,7 +64,6 @@ const Login = () => {
 
   return (
     <div>
-      <Header />
       <div className="absolute">
         <img
           src="/assets/backgroundImage.jpg"
