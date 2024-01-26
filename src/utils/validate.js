@@ -1,4 +1,4 @@
-export const validateData = (email, password) => {
+export const validateData = (email, password, name = null) => {
   const isEmailValid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
     email
   );
@@ -7,6 +7,11 @@ export const validateData = (email, password) => {
       password
     );
 
+  if (name !== null) {
+    if (name.trim() === "") {
+      return "Name cannot be empty";
+    }
+  }
   if (!isEmailValid) {
     return "Email is not valid";
   }

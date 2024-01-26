@@ -27,7 +27,16 @@ const Login = () => {
 
   const handleAuthClick = () => {
     // validate email & password
-    const message = validateData(email.current.value, password.current.value);
+    let message = null;
+    if (isSignIn) {
+      message = validateData(email.current.value, password.current.value);
+    } else {
+      message = validateData(
+        email.current.value,
+        password.current.value,
+        name.current.value
+      );
+    }
     setErrorMessage(message);
     if (message) {
       return;
