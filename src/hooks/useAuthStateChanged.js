@@ -10,7 +10,7 @@ const useAuthStateChanged = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName } = user;
         dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
@@ -20,7 +20,10 @@ const useAuthStateChanged = () => {
         navigate("/");
       }
     });
-  }, [dispatch, navigate]);
+
+    // unsubscribe when the component unmounts or when the dependencies change
+    return () => unsubscribe();
+  }, []);
 };
 
 export default useAuthStateChanged;
