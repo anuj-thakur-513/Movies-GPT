@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import logout from "../utils/logout";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const user = useSelector((store) => store.user);
@@ -10,11 +11,13 @@ const Header = () => {
 
   return (
     <div className="absolute flex justify-between items-center w-screen px-6 bg-gradient-to-b from-black z-10">
-      <img className="w-44" src="/assets/logo.png" alt="logo" />
+      <Link to={"/"}>
+        <img className="w-44" src="/assets/logo.png" alt="logo" />
+      </Link>
       {user && (
         <div className="flex items-center">
           <img
-            className="w-12"
+            className="w-12 rounded"
             src="/assets/userProfileIcon.jpg"
             alt="profile icon"
           />

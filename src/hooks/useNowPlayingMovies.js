@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { addNowPlayingMovies } from "../store/movies/moviesSlice";
 import { API_OPTIONS } from "../utils/constants";
 
-const useNowPlayingMovies = async () => {
+const useNowPlayingMovies = () => {
   const dispatch = useDispatch();
 
   const nowPlayingMovies = useSelector(
@@ -18,7 +18,6 @@ const useNowPlayingMovies = async () => {
     );
 
     const json = await data.json();
-    console.log(json.results);
     dispatch(addNowPlayingMovies(json.results));
   };
 

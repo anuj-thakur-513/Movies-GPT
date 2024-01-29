@@ -23,7 +23,7 @@ const useAuthStateChanged = () => {
 
     // unsubscribe when the component unmounts or when the dependencies change
     return () => unsubscribe();
-  }, []);
+  }, [navigate]);
 };
 
 export default useAuthStateChanged;

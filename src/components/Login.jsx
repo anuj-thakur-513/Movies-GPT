@@ -8,7 +8,7 @@ import signin from "../utils/signin";
 const Login = () => {
   const dispatch = useDispatch();
 
-  const [isSignIn, setIsSignIn] = useState(true); // state for toggling signup/signin
+  const [isSignIn, setIsSignIn] = useState(false); // state for toggling signup/signin
   const [errorMessage, setErrorMessage] = useState(null); // state to show errors faced while auth
   const [authenticating, setAuthenticating] = useState(false); // state to show loading state while authenticating
 
