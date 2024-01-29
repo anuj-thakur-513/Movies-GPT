@@ -5,3 +5,5 @@ export const API_OPTIONS = {
     Authorization: "Bearer " + import.meta.env.VITE_TMDB_KEY,
   },
 };
+
+export const TMDB_IMAGE_URL = "https://image.tmdb.org/t/p/w500";

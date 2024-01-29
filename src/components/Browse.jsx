@@ -9,14 +9,6 @@ const Browse = () => {
     <div>
       <MainContainer />
       <SecondaryContainer />
-      {/* 
-      Main Container
-        - Video Background
-        - Video Title
-      Secondary Container
-        - Movies List * n
-          - Cards * n
-    */}
     </div>
   );
 };
