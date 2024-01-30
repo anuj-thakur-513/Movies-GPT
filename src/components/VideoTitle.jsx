@@ -9,7 +9,7 @@ const VideoTitle = ({ title, overview }) => {
   };
 
   return (
-    <div className="pt-[15%] px-6 md:px-24 w-screen aspect-video absolute text-white bg-gradient-to-tr from-black">
+    <div className="pt-[17%] px-6 md:px-24 w-screen aspect-video absolute text-white bg-gradient-to-tr from-black">
       <h1 className="text-2xl md:text-6xl font-bold">{title}</h1>
       <p className="hidden md:inline-block py-6 text-lg w-1/4">{overview}</p>
       <div className="my-4 md:m-0">
