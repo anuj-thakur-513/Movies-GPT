@@ -3,7 +3,7 @@ import Login from "./components/Login";
 import Browse from "./components/Browse";
 import useAuthStateChanged from "./hooks/useAuthStateChanged";
 import Header from "./components/Header";
-import { TrailerAudioContext } from "./utils/trailerAudioContext";
+import { TrailerAudioContext } from "./utils/TrailerAudioContext";
 import { useState } from "react";
 
 const App = () => {

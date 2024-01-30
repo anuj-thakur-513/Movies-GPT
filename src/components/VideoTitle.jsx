@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { TrailerAudioContext } from "../utils/trailerAudioContext";
+import { TrailerAudioContext } from "../utils/TrailerAudioContext";
 
 const VideoTitle = ({ title, overview }) => {
   const audio = useContext(TrailerAudioContext);
