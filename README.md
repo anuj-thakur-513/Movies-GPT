@@ -30,6 +30,8 @@
     - Title & Description
     - Movie Suggestions
       - Movie Lists \* N
+    - TV Series Suggestions (To be added)
+      - TV Series Lists \* N
 - GPT Search
   - Search Bar
   - Movie Suggestions
