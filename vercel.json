@@ -1,7 +1,8 @@
 {
-    "routes": [
-      { "src": "/", "dest": "/" },
-      { "src": "/browse", "dest": "/browse" },
-      { "src": "/search", "dest": "/search" }
+    "rewrites": [
+      {
+        "source": "/((?!api/.*).*)",
+        "destination": "/index.html"
+      }
     ]
   }
