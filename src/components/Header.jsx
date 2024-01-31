@@ -1,12 +1,14 @@
 import { useSelector, useDispatch } from "react-redux";
 import logout from "../utils/logout";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { toggleSearch } from "../store/search/searchSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
-  const showSearch = useSelector((store) => store.search.showSearch);
+  const location = useLocation();
+  const isSearchPage = location.pathname === "/search";
+  const targetPath = isSearchPage ? "/browse" : "/search";
 
   const handleSignoutClick = () => {
     logout();
@@ -18,17 +20,19 @@ const Header = () => {
 
   return (
     <div className="absolute flex justify-between items-center w-screen px-6 bg-gradient-to-b from-black z-10">
-      <Link to={"/"}>
+      <Link to={user === null ? "/" : "/browse"}>
         <img className="w-44" src="/assets/logo.png" alt="logo" />
       </Link>
       {user && (
         <div className="flex items-center">
-          <button
-            className="py-2 px-4 m-2 mx-4 bg-purple-600 text-white rounded"
-            onClick={handleSearchClick}
-          >
-            {showSearch ? "Home" : "Search"}
-          </button>
+          <Link to={targetPath}>
+            <button
+              className="py-2 px-4 m-2 mx-4 bg-purple-600 text-white rounded"
+              onClick={handleSearchClick}
+            >
+              {isSearchPage ? "Home" : "Search"}
+            </button>
+          </Link>
           <img
             className="w-12 rounded"
             src="/assets/userProfileIcon.jpg"

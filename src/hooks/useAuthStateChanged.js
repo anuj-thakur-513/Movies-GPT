@@ -14,16 +14,20 @@ const useAuthStateChanged = () => {
       if (user) {
         const { uid, email, displayName } = user;
         dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
-        navigate("/browse");
+
+        // if user tries to access "/" page, redirect to browse page
+        if (window.location.pathname === "/") {
+          navigate("/browse");
+        }
       } else {
         dispatch(removeUser());
         navigate("/");
       }
     });
 
-    // unsubscribe when the component unmounts or when the dependencies change
+    // Unsubscribe when the component unmounts or when the dependencies change.
     return () => unsubscribe();
-  }, [navigate]);
+  }, []);
 };
 
 export default useAuthStateChanged;
