@@ -5,6 +5,7 @@ import useAuthStateChanged from "./hooks/useAuthStateChanged";
 import Header from "./components/Header";
 import { TrailerAudioContext } from "./utils/TrailerAudioContext";
 import { useState } from "react";
+import Footer from "./components/Footer";
 
 const App = () => {
   useAuthStateChanged();
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/" element={<Login />} />
           <Route path="/browse" element={<Browse />} />
         </Routes>
+        <Footer />
       </TrailerAudioContext.Provider>
     </>
   );
