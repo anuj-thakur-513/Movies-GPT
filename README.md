@@ -10,6 +10,8 @@
   - All the components of the app
 - hooks
   - all the custom hooks to be used
+- pages
+  - all the main pages of the app (login, browse, search)
 - store
   - eg. user
     - reducer_files

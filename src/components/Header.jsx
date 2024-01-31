@@ -1,12 +1,19 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import logout from "../utils/logout";
 import { Link } from "react-router-dom";
+import { toggleSearch } from "../store/search/searchSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+  const showSearch = useSelector((store) => store.search.showSearch);
 
   const handleSignoutClick = () => {
     logout();
+  };
+
+  const handleSearchClick = () => {
+    dispatch(toggleSearch());
   };
 
   return (
@@ -16,6 +23,12 @@ const Header = () => {
       </Link>
       {user && (
         <div className="flex items-center">
+          <button
+            className="py-2 px-4 m-2 mx-4 bg-purple-600 text-white rounded"
+            onClick={handleSearchClick}
+          >
+            {showSearch ? "Home" : "Search"}
+          </button>
           <img
             className="w-12 rounded"
             src="/assets/userProfileIcon.jpg"

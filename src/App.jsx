@@ -1,15 +1,16 @@
 import { Routes, Route } from "react-router-dom";
-import Login from "./components/Login";
-import Browse from "./components/Browse";
+import Login from "./pages/Login";
+import Browse from "./pages/Browse";
 import useAuthStateChanged from "./hooks/useAuthStateChanged";
 import Header from "./components/Header";
-import { TrailerAudioContext } from "./utils/TrailerAudioContext";
+import { TrailerAudioContext } from "./utils/GlobalContext";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import Footer from "./components/Footer";
 
 const App = () => {
   useAuthStateChanged();
-
+  const showSearch = useSelector((store) => store.search.showSearch);
   const [muteAudio, setMuteAudio] = useState(1);
 
   return (
@@ -22,8 +23,8 @@ const App = () => {
           <Route path="/" element={<Login />} />
           <Route path="/browse" element={<Browse />} />
         </Routes>
-        <Footer />
       </TrailerAudioContext.Provider>
+      {!showSearch && <Footer />}
     </>
   );
 };

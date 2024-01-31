@@ -10,7 +10,6 @@ const Footer = () => {
               <li>Action</li>
               <li>Comedy</li>
               <li>Drama</li>
-              {/* Add more categories as needed */}
             </ul>
           </div>
 
