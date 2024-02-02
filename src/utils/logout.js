@@ -1,11 +1,14 @@
 import { auth } from "./firebase";
 import { signOut } from "firebase/auth";
+import { errorToast, successToast } from "./toastMessage";
 
 const logout = () => {
   signOut(auth)
-    .then(() => {})
+    .then(() => {
+      successToast(`Successfully Signed out`);
+    })
     .catch((error) => {
-      console.log(error);
+      errorToast(error);
     });
 };
 

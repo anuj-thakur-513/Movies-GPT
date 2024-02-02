@@ -1,13 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
 import logout from "../utils/logout";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toggleSearch } from "../store/search/searchSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
-  const location = useLocation();
-  const isSearchPage = location.pathname === "/search";
+  const isSearchPage = window.location.pathname === "/search";
   const targetPath = isSearchPage ? "/browse" : "/search";
 
   const handleSignoutClick = () => {

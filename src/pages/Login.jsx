@@ -110,7 +110,7 @@ const Login = () => {
             <img
               src="/assets/loading.gif"
               alt="Loading"
-              className="absolute inset-0 m-auto max-w-full h-6"
+              className="m-auto max-w-full h-6"
             />
           )}
           {authenticating ? "" : isSignIn ? "Sign In" : "Sign Up"}

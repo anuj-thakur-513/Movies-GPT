@@ -1,6 +1,7 @@
 import { auth } from "./firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { addUser } from "../store/user/userSlice";
+import { successToast } from "./toastMessage";
 
 const signup = (
   name,
@@ -27,6 +28,8 @@ const signup = (
           displayName: updatedUser.displayName,
         })
       );
+
+      successToast(`Welcome ${updatedUser.displayName}`);
     })
     .catch((error) => {
       const errorCode = error.code;

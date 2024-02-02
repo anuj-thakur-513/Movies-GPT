@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import useMovieTrailer from "../hooks/useMovieTrailer";
 import { useContext } from "react";
-import { TrailerAudioContext } from "../utils/GlobalContext";
+import TrailerAudioContext from "../context/TrailerAudioContext";
 
 const VideoBackground = ({ movieId }) => {
   useMovieTrailer(movieId);
