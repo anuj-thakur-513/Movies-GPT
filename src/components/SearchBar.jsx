@@ -14,9 +14,10 @@ const SearchBar = () => {
 
   const handleSearchClick = async () => {
     setIsSearching(true);
-    const moviesList = await searchAi(searchText.current.value);
+    let moviesList = await searchAi(searchText.current.value);
     if (moviesList) {
       moviesList.unshift(searchText.current.value);
+      moviesList = Array.from(new Set(moviesList));
       const arr = moviesList.map((movie) => searchMovie(movie)); // we get an array of promises as the map function doesn't wait for promise to resolve
       const tmdbResults = await Promise.all(arr);
       console.log(tmdbResults);
