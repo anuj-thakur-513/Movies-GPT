@@ -1,8 +1,7 @@
 import openai from "./openAi";
 import { errorToast } from "./toastMessage";
 
-const searchAi = async (setIsSearching, searchText) => {
-  setIsSearching(true);
+const searchAi = async (searchText) => {
   const query =
     "Act as a Movie recommendation system and suggest some movies for the query: " +
     searchText +
@@ -14,12 +13,11 @@ const searchAi = async (setIsSearching, searchText) => {
       model: "gpt-3.5-turbo",
     });
     moviesList = response.choices?.[0]?.message?.content.split(",");
-    console.log(moviesList);
   } catch (e) {
     errorToast("Search Failed! Please try again in sometime.");
   }
 
-  setIsSearching(false);
+  return moviesList.length === 0 ? null : moviesList;
 };
 
 export default searchAi;

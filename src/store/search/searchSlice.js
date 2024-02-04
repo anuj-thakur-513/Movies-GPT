@@ -1,16 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
-import toggleSearchReducer from "./reducers/toggleSearchReducer";
+import addTmdbSearchResultsReducer from "./reducers/addTmdbSearchResultsReducer";
+import addGptSearchResultsReducer from "./reducers/addGptSearchResultsReducer";
 
 const searchSlice = createSlice({
   name: "search",
   initialState: {
-    showSearch: false,
+    gptSearchResults: null,
+    tmdbSearchResults: null,
   },
   reducers: {
-    toggleSearch: toggleSearchReducer,
+    addGptSearchResults: addGptSearchResultsReducer,
+    addTmdbSearchResults: addTmdbSearchResultsReducer,
   },
 });
 
-export const { toggleSearch } = searchSlice.actions;
+export const { addGptSearchResults, addTmdbSearchResults } =
+  searchSlice.actions;
 
 export default searchSlice.reducer;

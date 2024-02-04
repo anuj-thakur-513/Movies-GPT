@@ -1,20 +1,14 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import logout from "../utils/logout";
 import { Link } from "react-router-dom";
-import { toggleSearch } from "../store/search/searchSlice";
 
 const Header = () => {
-  const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const isSearchPage = window.location.pathname === "/search";
   const targetPath = isSearchPage ? "/browse" : "/search";
 
   const handleSignoutClick = () => {
     logout();
-  };
-
-  const handleSearchClick = () => {
-    dispatch(toggleSearch());
   };
 
   return (
@@ -25,10 +19,7 @@ const Header = () => {
       {user && (
         <div className="flex items-center">
           <Link to={targetPath}>
-            <button
-              className="py-2 px-4 m-2 mx-4 bg-purple-600 text-white rounded"
-              onClick={handleSearchClick}
-            >
+            <button className="py-2 px-4 m-2 mx-4 bg-purple-600 text-white rounded">
               {isSearchPage ? "Home" : "Search"}
             </button>
           </Link>

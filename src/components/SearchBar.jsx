@@ -1,12 +1,28 @@
 import { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import searchAi from "../utils/searchAi";
+import searchMovie from "../utils/searchMovie";
+import {
+  addGptSearchResults,
+  addTmdbSearchResults,
+} from "../store/search/searchSlice";
 
 const SearchBar = () => {
+  const dispatch = useDispatch();
   const [isSearching, setIsSearching] = useState(false);
   const searchText = useRef(null);
 
-  const handleSearchClick = () => {
-    searchAi(setIsSearching, searchText.current.value);
+  const handleSearchClick = async () => {
+    setIsSearching(true);
+    const moviesList = await searchAi(searchText.current.value);
+    if (moviesList) {
+      dispatch(addGptSearchResults(moviesList));
+      const arr = moviesList.map((movie) => searchMovie(movie)); // we get an array of promises as the map function doesn't wait for promise to resolve
+      const tmdbResults = await Promise.all(arr);
+      dispatch(addTmdbSearchResults(tmdbResults));
+    }
+
+    setIsSearching(false);
   };
 
   return (

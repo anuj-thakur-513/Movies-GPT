@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="bg-black text-white p-8">
+    <footer className="w-screen bg-black text-white p-8">
       <div className="container mx-auto">
         <div className="flex flex-wrap justify-between">
           {/* Categories */}
