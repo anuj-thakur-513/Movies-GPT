@@ -16,9 +16,9 @@ const SearchBar = () => {
     setIsSearching(true);
     const moviesList = await searchAi(searchText.current.value);
     if (moviesList) {
-      dispatch(addGptSearchResults(moviesList));
       const arr = moviesList.map((movie) => searchMovie(movie)); // we get an array of promises as the map function doesn't wait for promise to resolve
       const tmdbResults = await Promise.all(arr);
+      dispatch(addGptSearchResults(moviesList));
       dispatch(addTmdbSearchResults(tmdbResults));
     }
 
