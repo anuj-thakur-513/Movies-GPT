@@ -1,20 +1,25 @@
 import dayjs from "dayjs";
+import { Image, Breathing } from "react-shimmer";
 import { TMDB_IMAGE_URL } from "../utils/constants";
 import RatingBar from "./RatingBar";
 
 const MovieCard = ({ title, posterPath, rating, date }) => {
   if (!posterPath) return null;
   return (
-    <div className="group hover:scale-110 hover:shadow-lg transition-transform duration-200">
+    <div className="group">
       <div
         className={
-          "w-[130px] md:w-[180px] m-2 cursor-pointer rounded-lg relative shadow-md"
+          "w-[130px] md:w-[180px] m-2 cursor-pointer relative shadow-md group-hover:scale-110 duration-200"
         }
       >
-        <img
-          className="rounded-lg group-hover:opacity-50 transition-opacity"
+        <Image
+          NativeImgProps={{
+            className:
+              "rounded-lg transition-all group-hover:brightness-75 duration-200",
+          }}
           alt="movie card"
           src={TMDB_IMAGE_URL + posterPath}
+          fallback={<Breathing width={130} height={180} />}
         />
         <div className="relative left-1 bottom-4 md:left-2 md:bottom-8 w-8 md:w-14 bg-gray-900 rounded-full ">
           <RatingBar rating={rating} />

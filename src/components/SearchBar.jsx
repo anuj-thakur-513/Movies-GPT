@@ -16,8 +16,10 @@ const SearchBar = () => {
     setIsSearching(true);
     const moviesList = await searchAi(searchText.current.value);
     if (moviesList) {
+      moviesList.unshift(searchText.current.value);
       const arr = moviesList.map((movie) => searchMovie(movie)); // we get an array of promises as the map function doesn't wait for promise to resolve
       const tmdbResults = await Promise.all(arr);
+      console.log(tmdbResults);
       dispatch(addGptSearchResults(moviesList));
       dispatch(addTmdbSearchResults(tmdbResults));
     }
@@ -35,7 +37,7 @@ const SearchBar = () => {
           className="p-4 m-4 col-span-9"
           type="text"
           ref={searchText}
-          placeholder="What would you like to watch today ?"
+          placeholder="What kind of movies would you like to watch today ?"
         />
         <button
           className="col-span-3 m-4 py-2 px-4 bg-red-600 text-white rounded-lg hover:bg-red-700 duration-150"
