@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Header = () => {
   const user = useSelector((store) => store.user);
   const [dropDownOpen, setDropDownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const isSearchPage = window.location.pathname === "/search";
   const targetPath = isSearchPage ? "/browse" : "/search";
@@ -20,6 +21,26 @@ const Header = () => {
   const handleUserClick = () => {
     setDropDownOpen((dropDownOpen) => !dropDownOpen);
   };
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setDropDownOpen(false);
+    }
+  };
+
+  // close dropdown on clicking anywhere in the window
+  useEffect(() => {
+    window.addEventListener("click", handleClickOutside);
+
+    return () => {
+      window.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
+  // reset state of dropdown when user auth changed in redux store
+  useEffect(() => {
+    setDropDownOpen(false);
+  }, [user]);
 
   return (
     <div className="absolute z-10 flex w-screen items-center justify-between bg-gradient-to-b from-black px-6">
@@ -37,7 +58,7 @@ const Header = () => {
               )}
             </button>
           </Link>
-          <div className="relative inline-block">
+          <div className="relative inline-block" ref={dropdownRef}>
             <img
               className="mx-2 w-12 cursor-pointer"
               src="/assets/userProfileIcon.jpg"
@@ -48,7 +69,10 @@ const Header = () => {
               <div className="absolute right-0 mt-2 w-48 rounded-md bg-gray-800 shadow-lg">
                 <div className="py-1">
                   <p className="block px-4 py-2 text-white">
-                    You are signed in as <strong>{user?.displayName}</strong>
+                    You are signed in as{" "}
+                    <strong className="text-[#FF000C]">
+                      {user?.displayName}
+                    </strong>
                   </p>
                   <Link to="/browse">
                     <button className="block w-full px-4 py-2 text-left text-white duration-100 hover:bg-black">

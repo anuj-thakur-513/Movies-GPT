@@ -26,7 +26,7 @@ const MovieCard = ({ title, posterPath, rating, date }) => {
         </div>
         <h3
           className={
-            "relative bottom-4 line-clamp-1 px-2 text-sm font-semibold text-cyan-50 md:bottom-7 md:left-2 md:text-base"
+            "relative bottom-4 line-clamp-2 px-2 text-sm font-semibold text-cyan-50 md:bottom-7 md:left-2 md:text-base"
           }
         >
           {title}
