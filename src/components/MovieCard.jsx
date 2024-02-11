@@ -9,7 +9,7 @@ const MovieCard = ({ title, posterPath, rating, date }) => {
     <div className="group">
       <div
         className={
-          "w-[130px] md:w-[180px] m-2 cursor-pointer relative shadow-md group-hover:scale-110 duration-200"
+          "relative m-2 w-[130px] cursor-pointer shadow-md duration-200 group-hover:scale-110 md:w-[180px]"
         }
       >
         <Image
@@ -21,19 +21,19 @@ const MovieCard = ({ title, posterPath, rating, date }) => {
           src={TMDB_IMAGE_URL + posterPath}
           fallback={<Breathing width={130} height={180} />}
         />
-        <div className="relative left-1 bottom-4 md:left-2 md:bottom-8 w-8 md:w-14 bg-gray-900 rounded-full ">
+        <div className="relative bottom-4 left-1 w-8 rounded-full bg-gray-900 md:bottom-8 md:left-2 md:w-14 ">
           <RatingBar rating={rating} />
         </div>
         <h3
           className={
-            "text-cyan-50 font-semibold bottom-4 px-2 relative md:bottom-7 md:left-2 text-sm md:text-base line-clamp-2"
+            "relative bottom-4 line-clamp-1 px-2 text-sm font-semibold text-cyan-50 md:bottom-7 md:left-2 md:text-base"
           }
         >
           {title}
         </h3>
         <p
           className={
-            "text-cyan-50 bottom-4 px-2 text-xs md:text-base relative md:bottom-7 md:left-2"
+            "relative bottom-4 px-2 text-xs text-cyan-50 md:bottom-7 md:left-2 md:text-base"
           }
         >
           {dayjs(date).format("MMM D, YYYY")}

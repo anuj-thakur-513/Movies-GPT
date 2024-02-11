@@ -1,9 +1,15 @@
 import { useSelector } from "react-redux";
 import logout from "../utils/logout";
 import { Link } from "react-router-dom";
+import SearchIcon from "@mui/icons-material/Search";
+import HomeIcon from "@mui/icons-material/Home";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { useState } from "react";
 
 const Header = () => {
   const user = useSelector((store) => store.user);
+  const [dropDownOpen, setDropDownOpen] = useState(false);
+
   const isSearchPage = window.location.pathname === "/search";
   const targetPath = isSearchPage ? "/browse" : "/search";
 
@@ -11,29 +17,59 @@ const Header = () => {
     logout();
   };
 
+  const handleUserClick = () => {
+    setDropDownOpen((dropDownOpen) => !dropDownOpen);
+  };
+
   return (
-    <div className="absolute flex justify-between items-center w-screen px-6 bg-gradient-to-b from-black z-10">
+    <div className="absolute z-10 flex w-screen items-center justify-between bg-gradient-to-b from-black px-6">
       <Link to={user === null ? "/" : "/browse"}>
-        <img className="w-44" src="/assets/logo.png" alt="logo" />
+        <img className="w-32 md:w-44" src="/assets/logo.png" alt="logo" />
       </Link>
       {user && (
         <div className="flex items-center">
-          <Link to={targetPath}>
-            <button className="py-2 px-4 m-2 mx-4 bg-purple-600 text-white rounded">
-              {isSearchPage ? "Home" : "Search"}
+          <Link to={targetPath} className="mr-5 duration-150 hover:scale-125">
+            <button className="m-2 mx-4 rounded-lg px-1 text-white">
+              {isSearchPage ? (
+                <HomeIcon fontSize="large" />
+              ) : (
+                <SearchIcon fontSize="large" />
+              )}
             </button>
           </Link>
-          <img
-            className="w-12 rounded"
-            src="/assets/userProfileIcon.jpg"
-            alt="profile icon"
-          />
-          <button
-            className="ml-4 rounded bg-[#FF000C] text-white p-2 scale-100 hover:scale-95 duration-200"
-            onClick={handleSignoutClick}
-          >
-            Signout
-          </button>
+          <div className="relative inline-block">
+            <img
+              className="mx-2 w-12 cursor-pointer"
+              src="/assets/userProfileIcon.jpg"
+              alt="profile icon"
+              onClick={handleUserClick}
+            />
+            {dropDownOpen && (
+              <div className="absolute right-0 mt-2 w-48 rounded-md bg-gray-800 shadow-lg">
+                <div className="py-1">
+                  <p className="block px-4 py-2 text-white">
+                    You are signed in as <strong>{user?.displayName}</strong>
+                  </p>
+                  <Link to="/browse">
+                    <button className="block w-full px-4 py-2 text-left text-white duration-100 hover:bg-black">
+                      Watch Later
+                    </button>
+                  </Link>
+                  <Link to="/browse">
+                    <button className="block w-full px-4 py-2 text-left text-white duration-100 hover:bg-black">
+                      Favourites
+                    </button>
+                  </Link>
+                  <button
+                    onClick={handleSignoutClick}
+                    className="block w-full px-4 py-2 text-left text-white duration-100 hover:bg-black"
+                  >
+                    Logout <LogoutIcon />
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>
