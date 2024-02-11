@@ -43,14 +43,17 @@ const Header = () => {
   }, [user]);
 
   return (
-    <div className="absolute z-10 flex w-screen items-center justify-between bg-gradient-to-b from-black px-6">
+    <div className="absolute z-10 flex w-screen items-center justify-between bg-gradient-to-b from-black px-4 md:px-6">
       <Link to={user === null ? "/" : "/browse"}>
-        <img className="w-32 md:w-44" src="/assets/logo.png" alt="logo" />
+        <img className="w-28 md:w-44" src="/assets/logo.png" alt="logo" />
       </Link>
       {user && (
         <div className="flex items-center">
-          <Link to={targetPath} className="mr-5 duration-150 hover:scale-125">
-            <button className="m-2 mx-4 rounded-lg px-1 text-white">
+          <Link
+            to={targetPath}
+            className="mr-1 duration-150 hover:scale-125 md:mr-5"
+          >
+            <button className="m-2 mx-2 rounded-lg px-1 text-white md:mx-4">
               {isSearchPage ? (
                 <HomeIcon fontSize="large" />
               ) : (
@@ -60,7 +63,7 @@ const Header = () => {
           </Link>
           <div className="relative inline-block" ref={dropdownRef}>
             <img
-              className="mx-2 w-12 cursor-pointer"
+              className="w-10 cursor-pointer md:mx-2 md:w-12"
               src="/assets/userProfileIcon.jpg"
               alt="profile icon"
               onClick={handleUserClick}
