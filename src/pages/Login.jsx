@@ -33,7 +33,7 @@ const Login = () => {
       message = validateData(
         email.current.value,
         password.current.value,
-        name.current.value
+        name.current.value,
       );
     }
     setErrorMessage(message);
@@ -50,32 +50,30 @@ const Login = () => {
         password.current.value,
         setErrorMessage,
         setAuthenticating,
-        dispatch
+        dispatch,
       );
     } else {
       signin(
         email.current.value,
         password.current.value,
         setErrorMessage,
-        setAuthenticating
+        setAuthenticating,
       );
     }
   };
 
   return (
-    <div>
-      <div className="absolute">
-        <img
-          src="/assets/backgroundImage.jpg"
-          alt="background"
-          className="w-screen h-screen brightness-75"
-        />
-      </div>
+    <div className="relative">
+      <img
+        src="/assets/backgroundImage.jpg"
+        alt="background"
+        className="h-screen w-screen object-cover brightness-75"
+      />
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="absolute w-3/12 p-12 bg-black bg-opacity-85 my-40 mx-auto left-0 right-0 text-white rounded-lg"
+        className="absolute left-1/2 top-1/2 w-11/12 -translate-x-1/2 -translate-y-1/2 transform rounded-lg bg-black bg-opacity-85 p-6 text-white md:w-3/4 md:p-12 lg:w-1/2 xl:w-1/3"
       >
-        <h1 className="font-bold text-3xl pb-4">
+        <h1 className="pb-4 text-3xl font-bold">
           {isSignIn ? "Sign In" : "Sign Up"}
         </h1>
         {!isSignIn && (
@@ -83,26 +81,26 @@ const Login = () => {
             type="text"
             ref={name}
             placeholder="Full Name"
-            className="p-4 my-4 w-full bg-gray-800 bg-opacity-85"
+            className="my-4 w-full bg-gray-800 bg-opacity-85 p-4"
           />
         )}
         <input
           type="text"
           ref={email}
           placeholder="Email Address"
-          className="p-4 my-3 w-full rounded bg-gray-800 bg-opacity-85"
+          className="my-3 w-full rounded bg-gray-800 bg-opacity-85 p-4"
         />
         <input
           type="password"
           ref={password}
           placeholder="Password"
-          className="p-4 my-3 w-full rounded bg-gray-800 bg-opacity-85"
+          className="my-3 w-full rounded bg-gray-800 bg-opacity-85 p-4"
         />
         {errorMessage && (
-          <p className="bg-[#E87C03] p-3 rounded">{errorMessage}</p>
+          <p className="rounded bg-[#E87C03] p-3">{errorMessage}</p>
         )}
         <button
-          className="p-4 my-6 w-full h-14 relative bg-red-600 rounded hover:bg-red-700 duration-150"
+          className="relative my-6 h-14 w-full rounded bg-red-600 p-4 duration-150 hover:bg-red-700"
           onClick={handleAuthClick}
           disabled={authenticating}
         >
@@ -110,12 +108,12 @@ const Login = () => {
             <img
               src="/assets/loading.gif"
               alt="Loading"
-              className="m-auto max-w-full h-6"
+              className="m-auto h-6 max-w-full"
             />
           )}
           {authenticating ? "" : isSignIn ? "Sign In" : "Sign Up"}
         </button>
-        <div className="py-4 flex">
+        <div className="flex py-4">
           <p className="text-gray-400">
             {isSignIn ? "New to Movies GPT?" : "Already a User?"}
           </p>
