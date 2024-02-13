@@ -42,7 +42,7 @@ Create a new account or use the follwing credentials:
 - Clone repo into local machine
 
 ```bash
-  git clone https://github.com/anuj-thakur-513/Movies-GPT.git
+git clone https://github.com/anuj-thakur-513/Movies-GPT.git
 ```
 
 - Go to the Project Directory
