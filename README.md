@@ -39,10 +39,30 @@ Create a new account or use the follwing credentials:
 
 ## Clone and Run Locally:
 
-- `git clone https://github.com/anuj-thakur-513/Movies-GPT.git`
-- `cd Movies-GPT`
-- `npm install`
-- `npm run dev`
+- Clone repo into local machine
+
+```bash
+  git clone https://github.com/anuj-thakur-513/Movies-GPT.git
+```
+
+- Go to the Project Directory
+
+```bash
+cd Movies-GPT
+```
+
+- Install all the Dependencies
+
+```bash
+npm install
+```
+
+- Run the development server
+
+```bash
+npm run dev
+```
+
 - Visit [http://localhost:5173/](http://localhost:5173/)
 
 ## Features
