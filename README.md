@@ -3,6 +3,7 @@
 Movies GPT is an exciting project that combines the power of the TMDb (The Movie Database) API with the innovative capabilities of OpenAI's GPT (Generative Pre-trained Transformer) model. This application provides users with a sleek and user-friendly interface reminiscent of popular streaming platforms like Netflix.
 
 Visit: [https://moviesgpt-anuj-513.vercel.app/](https://moviesgpt-anuj-513.vercel.app/)
+
 Create a new account or use the follwing credentials:
 
 - email: test@gmail.com
