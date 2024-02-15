@@ -6,7 +6,7 @@ const Search = () => {
     <div>
       <div className="fixed -z-10">
         <img
-          className="w-screen h-screen brightness-75"
+          className="h-screen w-screen object-cover brightness-75"
           src="/assets/backgroundImage.jpg"
           alt="Netflix bg"
         />
