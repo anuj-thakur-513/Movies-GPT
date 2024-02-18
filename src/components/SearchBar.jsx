@@ -29,19 +29,19 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="pt-[35%] md:pt-[10%] flex justify-center">
+    <div className="flex justify-center pt-[35%] md:pt-[10%]">
       <form
-        className="w-full md:w-1/2 bg-black bg-opacity-85 rounded-lg grid grid-cols-12"
+        className="grid w-full grid-cols-12 rounded-lg bg-black bg-opacity-85 md:w-1/2"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
-          className="p-4 m-4 col-span-9"
+          className="col-span-9 m-4 p-4 text-xs lg:text-base"
           type="text"
           ref={searchText}
-          placeholder="What kind of movies would you like to watch today ?"
+          placeholder="What kind of movies would you like to watch ?"
         />
         <button
-          className="col-span-3 m-4 py-2 px-4 bg-red-600 text-white rounded-lg hover:bg-red-700 duration-150"
+          className="col-span-3 m-4 rounded-lg bg-red-600 text-white duration-150 hover:bg-red-700 md:px-4 md:py-2"
           onClick={handleSearchClick}
           disabled={isSearching}
         >
@@ -49,7 +49,7 @@ const SearchBar = () => {
             <img
               src="/assets/loading.gif"
               alt="Searching"
-              className="m-auto max-w-full h-6"
+              className="m-auto h-6 max-w-full"
             />
           ) : (
             "Search"
