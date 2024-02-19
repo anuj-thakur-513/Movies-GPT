@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import TrailerAudioContext from "../context/TrailerAudioContext";
+import { Link } from "react-router-dom";
 
-const VideoTitle = ({ title, overview }) => {
+const VideoTitle = ({ movieId, title, overview }) => {
   const audio = useContext(TrailerAudioContext);
 
   const handleAudioClick = () => {
@@ -21,9 +22,11 @@ const VideoTitle = ({ title, overview }) => {
         >
           {audio.muteAudio === 1 ? "Play Audio" : "Mute Audio"}
         </button>
-        <button className="mx-2 hidden rounded-lg bg-gray-500 bg-opacity-50 px-3 py-2 text-xl text-white duration-150 hover:bg-gray-600 md:inline-block md:px-12 md:py-4">
-          ⓘ More Info
-        </button>
+        <Link to={"/movie/" + movieId}>
+          <button className="mx-2 hidden rounded-lg bg-gray-500 bg-opacity-50 px-3 py-2 text-xl text-white duration-150 hover:bg-gray-600 md:inline-block md:px-12 md:py-4">
+            ⓘ More Info
+          </button>
+        </Link>
       </div>
     </div>
   );

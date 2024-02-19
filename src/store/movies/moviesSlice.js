@@ -5,6 +5,14 @@ import addPopularMoviesReducer from "./reducers/addPopularMoviesReducer";
 import addTopRatedMoviesReducer from "./reducers/addTopRatedMoviesReducer";
 import addUpcomingMoviesReducer from "./reducers/addUpcomingMoviesReducer";
 import addTrendingMoviesReducer from "./reducers/addTrendingMoviesReducer";
+import {
+  addFavouriteMovieReducer,
+  removeFavouriteMovieReducer,
+} from "./reducers/favouriteMovieReducer";
+import {
+  addWatchlistReducer,
+  removeWatchlistReducer,
+} from "./reducers/watchlistReducer";
 
 const moviesSlice = createSlice({
   name: "movies",
@@ -15,6 +23,8 @@ const moviesSlice = createSlice({
     topRatedMovies: null,
     upcomingMovies: null,
     trendingMovies: null,
+    favouriteMovies: [],
+    watchlist: [],
   },
   reducers: {
     addNowPlayingMovies: addNowPlayingMoviesReducer,
@@ -23,6 +33,10 @@ const moviesSlice = createSlice({
     addTopRatedMovies: addTopRatedMoviesReducer,
     addUpcomingMovies: addUpcomingMoviesReducer,
     addTrendingMovies: addTrendingMoviesReducer,
+    addFavouriteMovie: addFavouriteMovieReducer,
+    removeFavouriteMovie: removeFavouriteMovieReducer,
+    addWatchlist: addWatchlistReducer,
+    removeWatchlist: removeWatchlistReducer,
   },
 });
 
@@ -33,6 +47,10 @@ export const {
   addTopRatedMovies,
   addUpcomingMovies,
   addTrendingMovies,
+  addFavouriteMovie,
+  removeFavouriteMovie,
+  addWatchlist,
+  removeWatchlist,
 } = moviesSlice.actions;
 
 export default moviesSlice.reducer;

@@ -8,6 +8,7 @@ import Search from "./pages/Search";
 import useAuthStateChanged from "./hooks/useAuthStateChanged";
 import Header from "./components/Header";
 import TrailerAudioContext from "./context/TrailerAudioContext";
+import MovieDetails from "./pages/MovieDetails";
 
 const App = () => {
   useAuthStateChanged();
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/" element={<Login />} />
           <Route path="/browse" element={<Browse />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/movie/:movieId" element={<MovieDetails />} />
         </Routes>
         <ToastContainer />
       </TrailerAudioContext.Provider>
