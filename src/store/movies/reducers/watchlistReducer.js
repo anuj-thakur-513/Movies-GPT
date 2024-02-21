@@ -17,4 +17,5 @@ export const removeWatchlistReducer = (state, action) => {
   state.watchList = state.watchList.filter(
     (movie) => movie?.id !== action.payload,
   );
+  successToast("Removed from Watchlist");
 };

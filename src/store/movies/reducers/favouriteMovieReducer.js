@@ -9,12 +9,13 @@ export const addFavouriteMovieReducer = (state, action) => {
     successToast("Already in Favourites");
   } else {
     state.favouriteMovies.push(action.payload);
-    successToast("Added in Favourites");
+    successToast("Added to Favourites");
   }
 };
 
 export const removeFavouriteMovieReducer = (state, action) => {
-  state.favouritesMovies = state.favouriteMovies.filter(
+  state.favouriteMovies = state.favouriteMovies.filter(
     (movie) => movie?.id !== action.payload,
   );
+  successToast("Removed from Favourites");
 };

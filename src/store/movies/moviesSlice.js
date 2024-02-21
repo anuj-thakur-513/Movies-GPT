@@ -38,8 +38,8 @@ const moviesSlice = createSlice({
     addRecommendedMovies: addRecommendedMoviesReducer,
     addFavouriteMovie: addFavouriteMovieReducer,
     removeFavouriteMovie: removeFavouriteMovieReducer,
-    addWatchlist: addWatchlistReducer,
-    removeWatchlist: removeWatchlistReducer,
+    addWatchlistMovie: addWatchlistReducer,
+    removeWatchlistMovie: removeWatchlistReducer,
   },
 });
 
@@ -53,8 +53,8 @@ export const {
   addRecommendedMovies,
   addFavouriteMovie,
   removeFavouriteMovie,
-  addWatchlist,
-  removeWatchlist,
+  addWatchlistMovie,
+  removeWatchlistMovie,
 } = moviesSlice.actions;
 
 export default moviesSlice.reducer;

@@ -1,16 +1,18 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { TMDB_IMAGE_URL } from "../utils/constants";
 import VideoPalyer from "./VideoPlayer";
-import { useDispatch } from "react-redux";
 import PlayCircleOutlineOutlinedIcon from "@mui/icons-material/PlayCircleOutlineOutlined";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import BookmarkAddOutlinedIcon from "@mui/icons-material/BookmarkAddOutlined";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import RatingBar from "./RatingBar";
 import Genre from "./Genre";
 import dayjs from "dayjs";
 import { useState } from "react";
-import { addFavouriteMovie, addWatchlist } from "../store/movies/moviesSlice";
+import { handleFavourite } from "../utils/handleFavourite";
+import { handleWatchlist } from "../utils/handleWatchlist";
 
 const MovieDetailsTop = () => {
   const dispatch = useDispatch();
@@ -23,6 +25,8 @@ const MovieDetailsTop = () => {
   const keys = trailer?.key;
 
   const [toggle, setToggle] = useState(false);
+  const [favourite, setFavourite] = useState(false);
+  const [watchlist, setWatchlist] = useState(false);
 
   const handlePlay = () => {
     setToggle((toggle) => !toggle);
@@ -30,14 +34,6 @@ const MovieDetailsTop = () => {
 
   const handlePause = () => {
     setToggle(false);
-  };
-
-  const addToFavourite = () => {
-    dispatch(addFavouriteMovie(movieDetails));
-  };
-
-  const addTowatchList = () => {
-    dispatch(addWatchlist(movieDetails));
   };
 
   return (
@@ -76,16 +72,38 @@ const MovieDetailsTop = () => {
                 <RatingBar rating={movieDetails?.vote_average.toFixed(1)} />
               </div>
               <button
-                onClick={addToFavourite}
+                onClick={() =>
+                  handleFavourite(
+                    dispatch,
+                    favourite,
+                    setFavourite,
+                    movieDetails,
+                  )
+                }
                 className="mx-1 px-2 py-2 transition duration-200 after:text-red-600 hover:scale-110 md:mx-4"
               >
-                <FavoriteBorderIcon fontSize="large" />
+                {!favourite ? (
+                  <FavoriteBorderIcon fontSize="large" />
+                ) : (
+                  <FavoriteIcon fontSize="large" />
+                )}
               </button>
               <button
-                onClick={addTowatchList}
+                onClick={() =>
+                  handleWatchlist(
+                    dispatch,
+                    watchlist,
+                    setWatchlist,
+                    movieDetails,
+                  )
+                }
                 className="mx-1 px-2 py-2 transition duration-200 after:text-red-600 hover:scale-110 md:mx-4"
               >
-                <BookmarkAddOutlinedIcon fontSize="large" />
+                {!watchlist ? (
+                  <BookmarkAddOutlinedIcon fontSize="large" />
+                ) : (
+                  <BookmarkIcon fontSize="large" />
+                )}
               </button>
               <button
                 onClick={() => {

@@ -7,7 +7,6 @@ const VideoPalyer = ({ keys }) => {
         url={`https://www.youtube.com/watch?v=${keys}`}
         controls
         width="100%"
-        // height="100%"
         playing={true}
       />
     </div>
