@@ -13,6 +13,7 @@ Create a new account or use the follwing credentials:
 
 - Vite
 - React.js
+- Redux
 - Firebase
 - Open AI API
 - TMDB API
