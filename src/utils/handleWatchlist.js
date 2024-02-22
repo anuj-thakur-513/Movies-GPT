@@ -4,7 +4,7 @@ import {
 } from "../store/movies/moviesSlice";
 
 export const addWatchlist = (dispatch, movieDetails) => {
-  dispatch(addWatchlistMovie(dispatch, movieDetails));
+  dispatch(addWatchlistMovie(movieDetails));
 };
 
 export const removeWatchlist = (dispatch, movieId) => {

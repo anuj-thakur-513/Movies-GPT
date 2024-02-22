@@ -77,12 +77,12 @@ const Header = () => {
                       {user?.displayName}
                     </strong>
                   </p>
-                  <Link to="/browse">
+                  <Link to="/watchlist">
                     <button className="block w-full px-4 py-2 text-left text-white duration-100 hover:bg-black">
                       Watch Later
                     </button>
                   </Link>
-                  <Link to="/browse">
+                  <Link to="/favourites">
                     <button className="block w-full px-4 py-2 text-left text-white duration-100 hover:bg-black">
                       Favourites
                     </button>
