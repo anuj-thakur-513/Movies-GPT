@@ -4,7 +4,7 @@ Movies GPT is an exciting project that combines the power of the TMDb (The Movie
 
 Visit: [https://moviesgpt-anuj-513.vercel.app/](https://moviesgpt-anuj-513.vercel.app/)
 
-Create a new account or use the follwing credentials:
+Create a new account or use the following credentials:
 
 - email: test@gmail.com
 - password: Test@1234
@@ -19,7 +19,7 @@ Create a new account or use the follwing credentials:
 - TMDB API
 - Tailwind CSS
 
-## Browse Page Design for Logged In User
+## Browse Page Design for Logged-In User
 
 ![netflix gpt design](https://github.com/anuj-thakur-513/Movies-GPT/assets/82753410/5b2010fb-5465-4d8a-8ffe-ece93efa00a6)
 
